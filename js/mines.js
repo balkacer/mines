@@ -23,7 +23,7 @@ const levels = {
 let isGameStarted = false;
 const score = document.getElementById("score");
 
-function __generateBoard(level) {
+function generateBoard(level) {
   const { cols, rows, mines } = levels[level || "easy"];
 
   const board = Array(rows)
@@ -96,7 +96,7 @@ function __generateBoard(level) {
   };
 }
 
-let boardData = __generateBoard("easy");
+let boardData = generateBoard("easy");
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -171,7 +171,7 @@ function handleRightClick(el, row, col) {
 
 function handleDifficultyChange(e) {
   const level = e.target.value;
-  boardData = __generateBoard(level);
+  boardData = generateBoard(level);
   score.innerText = boardData.mines;
   isGameStarted = false;
   main();
