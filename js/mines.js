@@ -135,7 +135,11 @@ function setMines(initClickCell) {
         ).length;
         boardData.board[rowIndex][colIndex].closeMines = closeMines;
         const cell = document.getElementById(`cell-${rowIndex}-${colIndex}`);
-        cell.innerHTML = `<span>${closeMines > 0 ? closeMines : ""}</span>`;
+        if (closeMines) {
+          cell.innerHTML = `<span>${closeMines}</span>`;
+        } else {
+          cell.classList.add("empty");
+        }
       }
     });
   });
@@ -171,8 +175,16 @@ function handleRightClick(el, row, col) {
 
 function handleDifficultyChange(e) {
   const level = e.target.value;
+  const levelsFont = {
+    easy: "20px",
+    medium: "16px",
+    hard: "12px",
+    expert: "8px",
+  }
   boardData = generateBoard(level);
   score.innerText = boardData.mines;
+  const board = document.getElementById("board");
+  board.style.fontSize = levelsFont[level];
   isGameStarted = false;
   main();
 }

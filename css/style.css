@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 #container {
@@ -96,4 +97,8 @@ header * {
 
 .cell.opened.mine {
   background-color: #a50000;
+}
+
+.cell.opened.empty {
+  background-color: rgb(236, 236, 236);
 }
